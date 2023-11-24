@@ -18,3 +18,7 @@ export const aboutEnd =
   "solutions for growth by translating their future potential into a strategic brand narrative and authentic digital presence.";
 
 export const aboutTitle = "We’re Hovering Study";
+
+// product
+export const slogan = "Unleash Your Potential with our" 
+export const product = "Product" 

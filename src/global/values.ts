@@ -31,6 +31,15 @@ export const headers = [
   imgHeader5,
   imgHeader1,
 ];
+export const bottom = [
+  imgHeader1,
+  imgHeader2,
+  imgHeader3,
+  imgHeader4,
+  imgHeader5,
+];
+
+export const productTop = [imgHeader1, imgHeader2];
 
 export const aboutsRight = [
   "https://uploads-ssl.webflow.com/64a6caa646429ed756eb2d03/64a6cdff000962bbfb4a9d10_stewart-maclean-Zs1WKNa4Oy0-unsplash.jpg",
@@ -38,5 +47,5 @@ export const aboutsRight = [
 ];
 export const aboutsLeft = [
   "https://uploads-ssl.webflow.com/64a6caa646429ed756eb2d03/64a6cdff000962bbfb4a9cea_card1.jpg",
-  "https://uploads-ssl.webflow.com/64a6caa646429ed756eb2d03/64a6cdff000962bbfb4a9cd5_sc3.jpg"
-]
+  "https://uploads-ssl.webflow.com/64a6caa646429ed756eb2d03/64a6cdff000962bbfb4a9cd5_sc3.jpg",
+];

@@ -22,6 +22,9 @@ export const imgHeader5 =
   "https://uploads-ssl.webflow.com/64a6caa646429ed756eb2d03/64a6cdff000962bbfb4a9cc6_newsletter.jpg";
 
 export const textBg = 'https://uploads-ssl.webflow.com/64a6caa646429ed756eb2d03/64a6cdff000962bbfb4a9cb8_underline-green.svg'
+
+export const iconArrow = "https://uploads-ssl.webflow.com/64a6caa646429ed756eb2d03/64a6cdff000962bbfb4a9cbb_white-arrow.svg"
+
 // svg
 const svg = `${assets}svg/`;
 

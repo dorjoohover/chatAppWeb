@@ -18,7 +18,7 @@ body {
 }
 
 .btn-green {
-  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: transform 0.3s cubic-bezier(.175, .885, .32, 1.275);
   padding-top: 1em;
   padding-bottom: 1em;
   padding-left: 1.4em;
@@ -28,8 +28,19 @@ body {
   border: 0.08em solid var(--bg-prime);
   background-image: linear-gradient(97deg, #000 40%, var(--bg-prime));
 }
+.btn-text-green {
+  transition: transform 0.3s cubic-bezier(.175, .885, .32, 1.275);
+  /* transform: scale3d(0.9, 0.9, 1) rotateZ('0deg'); */
+  transform-style: preserve-3d;
+  border-radius: 100%;
+  border: 0.08em solid var(--bg-prime);
+  background-image: linear-gradient(97deg, #000 40%, var(--bg-prime));
+}
+.btn-text-green:hover {
+  transform: scale3d(0.9, 0.9, 1) rotateZ(-45deg);
+}
 .btn-purple {
-  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: transform 0.3s cubic-bezier(.175, .885, .32, 1.275);
 
   transform-style: preserve-3d;
   border-radius: 100%;

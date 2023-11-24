@@ -6,8 +6,8 @@ const Text = defineStyleConfig({
   },
   variants: {
     display: {
-      fontSize: "3.54em",
-      lineHeight: "1.25",
+      fontSize: "4em",
+      lineHeight: "1",
 
       color: "white",
       fontWeight: 'bold'
@@ -28,7 +28,7 @@ const Text = defineStyleConfig({
       fontSize: "2.02em",
       color: "white",
       fontWeight: "500",
-      lineHeight: "3",
+      lineHeight: "1.3",
     },
     text: {
       fontSize: "1.37em",

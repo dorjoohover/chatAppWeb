@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useLayoutEffect, useRef } from "react";
+import React, { useLayoutEffect, useRef } from "react";
 import { Box, HStack, Image, Text, VStack } from "@chakra-ui/react";
 import gsap from "gsap";
 
@@ -9,9 +9,6 @@ import {
   aboutHighlight,
   aboutStart,
   aboutTitle,
-  introDisplay,
-  introDisplay1,
-  introHeader,
   register,
 } from "@/global/string";
 import CustomButton from "./Button";
@@ -19,9 +16,12 @@ import CustomButton from "./Button";
 import { aboutsLeft, aboutsRight, headers } from "@/global/values";
 import { ScrollTrigger } from "gsap/all";
 import { BgText } from "./Text";
+import AboutBottom from "./AboutBottom";
+import Product from "./Product";
 export default function About() {
   const left = useRef(null);
   const right = useRef(null);
+
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     gsap.fromTo(
@@ -70,7 +70,7 @@ export default function About() {
       overflow={"hidden"}
       bg={"black"}
       borderRadius={"3.8em"}
-      px={"4em"}
+      px={"5em"}
     >
       <Box h={"6.5em"} />
       <HStack w={"full"} alignItems={"start"}>
@@ -86,13 +86,7 @@ export default function About() {
       <Box h={"3.7em"} />
 
       <HStack w={"full"} justifyContent={"space-between"} gap={"0.4em"}>
-      <Box
-          ref={left}
-          pos={"relative"}
-          h={"81vh"}
-          maxH={"20em"}
-          w={"full"}
-        >
+        <Box ref={left} pos={"relative"} h={"81vh"} maxH={"20em"} w={"full"}>
           {aboutsLeft.map((about, i) => {
             return (
               <Box
@@ -107,6 +101,7 @@ export default function About() {
                 className={`${i != 0 ? "aboutImgLeft" : ""} `}
               >
                 <Image
+                  ref={left}
                   src={about}
                   alt={`about ${i}`}
                   objectFit={"cover"}
@@ -119,7 +114,7 @@ export default function About() {
           })}
         </Box>
         <VStack justifyContent={"center"}>
-          <Text variant={"title"} textAlign={"center"} pb={'2em'}>
+          <Text variant={"title"} textAlign={"center"} pb={"2em"}>
             {aboutTitle}
           </Text>
           <CustomButton
@@ -152,13 +147,7 @@ export default function About() {
             }
           />
         </VStack>
-        <Box
-          ref={right}
-          pos={"relative"}
-          h={"81vh"}
-          maxH={"20em"}
-          w={"full"}
-        >
+        <Box ref={right} pos={"relative"} h={"81vh"} maxH={"20em"} w={"full"}>
           {aboutsRight.map((about, i) => {
             return (
               <Box
@@ -185,8 +174,9 @@ export default function About() {
           })}
         </Box>
       </HStack>
-
-      <Box h={"6.5em"} />
+      <Box h={"2em"} />
+      <AboutBottom />
+      <Product />
     </VStack>
   );
 }

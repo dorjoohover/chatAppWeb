@@ -8,6 +8,7 @@ export const theme = extendTheme({
     prime: '#73ffa2',
     purple: '#7373ff',
     lightGray: '#b3b3b3',
+    titleGray: '#8c8c8c'
   },
  
   components: {
