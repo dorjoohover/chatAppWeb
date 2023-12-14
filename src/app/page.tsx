@@ -7,13 +7,16 @@ import Description from "../components/Description";
 import { Box } from "@chakra-ui/react";
 import About from "@/components/About";
 import Product from "@/components/Product";
+import FooterPage from "@/components/Footer";
 export default function Home() {
   return (
     <Box>
       <Intro />
-      <Description />
+      <Description text="Amazing" text1="Awesome" />
       <About />
-
+      <Description text="Technology" text1="Community" />
+      <FooterPage />
+      
     </Box>
   );
 }

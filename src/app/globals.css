@@ -5,6 +5,7 @@
 :root {
   --bg-prime: #73ffa1;
   --bg-purple: #7373ff;
+  --bg-orange: #ff8359;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -27,6 +28,18 @@ body {
   border-radius: 100px;
   border: 0.08em solid var(--bg-prime);
   background-image: linear-gradient(97deg, #000 40%, var(--bg-prime));
+}
+
+.btn-orange {
+  transition: transform 0.3s cubic-bezier(.175, .885, .32, 1.275);
+  padding-top: 1em;
+  padding-bottom: 1em;
+  padding-left: 1.4em;
+  padding-right: 1.4em;
+  transform-style: preserve-3d;
+  border-radius: 100px;
+  border: 0.08em solid var(--bg-orange);
+  background-image: linear-gradient(97deg, #000 40%, var(--bg-orange));
 }
 .btn-text-green {
   transition: transform 0.3s cubic-bezier(.175, .885, .32, 1.275);
@@ -70,7 +83,12 @@ body {
 }
 
 
-
+input:focus {
+  outline: none !important;
+}
+*:focus {
+  outline: 0;
+}
 /* about */
 .aboutImgRight {
   transform: rotateZ(15deg) ;

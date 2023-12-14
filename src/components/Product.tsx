@@ -1,11 +1,18 @@
 "use client";
 import { useRef, useEffect } from "react";
 import { product, slogan } from "@/global/string";
-import { VStack, Box, Text, HStack, Image } from "@chakra-ui/react";
+import { VStack, Box, Text, HStack, Image, Button } from "@chakra-ui/react";
 import CustomButton, { IconButton } from "./Button";
-import { imgHeader1, imgHeader2, imgHeader3 } from "@/global/assets";
+import {
+  greenArrow,
+  imgHeader1,
+  imgHeader2,
+  imgHeader3,
+} from "@/global/assets";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/all";
+import { BgText } from "./Text";
+
 export default function Product() {
   const trigger = useRef(null);
   const img1 = useRef(null);
@@ -13,52 +20,89 @@ export default function Product() {
   const img3 = useRef(null);
 
   useEffect(() => {
-    console.log('asdf');
     let ctx = gsap.context(() => {
       gsap.registerPlugin(ScrollTrigger);
       let tl = gsap.timeline({
         defaults: { duration: 1 },
         scrollTrigger: {
           trigger: trigger.current,
-          start: "top top",
-          end: "5000 bottom",
+          start: "-500 top",
+          end: "1000 bottom",
           scrub: true,
 
-          onUpdate: (self) => {
-            console.log(self.progress)
-          },
+          onUpdate: (self) => {},
         },
       });
-      tl.to(
+      let t2 = gsap.timeline({
+        defaults: { duration: 1 },
+        scrollTrigger: {
+          trigger: trigger.current,
+          start: "-500 top",
+          end: "1000 bottom",
+          scrub: true,
+
+          onUpdate: (self) => {},
+        },
+      });
+      let t3 = gsap.timeline({
+        defaults: { duration: 1 },
+        scrollTrigger: {
+          trigger: trigger.current,
+          start: "-500 top",
+          end: "1000 bottom",
+          scrub: true,
+
+          onUpdate: (self) => {},
+        },
+      });
+      tl.fromTo(
         img1.current,
 
         {
+          translateX: "1.7em",
+          translateY: "-2em",
 
-          translateY: "2em",
-          rotateZ: "-8deg",
+          rotateZ: "-30deg",
         },
-        0
+        {
+          translateX: "1.7em",
+          translateY: "0.54em",
+
+          rotateZ: "-16deg",
+        }
       );
-      tl.to(
+
+      t3.fromTo(
+        img3.current,
+        {
+          translateY: "8em",
+          rotateZ: "-15deg",
+          rotateY: "0deg",
+        },
+        {
+          translateY: "6em",
+          rotateZ: "-6deg",
+          rotateY: "-6deg",
+        }
+      );
+      t2.fromTo(
         img2.current,
 
         {
-          translateY: "5em",
-          rotateZ: "23deg",
+          translateX: "-1.8em",
+          translateY: "-2em",
+          rotateZ: "20deg",
+          rotateY: "0deg",
         },
-        0
-      );
-      tl.to(
-        img3.current,
-
         {
-          translateY: "-4em",
-          rotateZ: "-1",
-          rotateY: "-10deg",
-        },
-        0
+          translateX: "-1.8em",
+          translateY: "2.4em",
+          rotateZ: "24deg",
+          rotateY: "14deg",
+        }
       );
     });
+
     return () => ctx.revert();
   }, []);
   return (
@@ -89,7 +133,6 @@ export default function Product() {
             borderRadius={"1.6em"}
             style={{
               transformStyle: "preserve-3d",
-              transform: `translateX(1.7em) translateY(-2em)  rotateZ(-30deg)`,
             }}
             willChange={"transform"}
           />
@@ -103,7 +146,6 @@ export default function Product() {
             borderRadius={"1.6em"}
             style={{
               transformStyle: "preserve-3d",
-              transform: `translate3d(-1.8em,-2em ,1px) rotateZ(20deg)`,
             }}
             willChange={"transform"}
           />
@@ -137,7 +179,6 @@ export default function Product() {
               borderRadius={"1.6em"}
               style={{
                 transformStyle: "preserve-3d",
-                transform: `translate3d(0em,8em ,0px) rotateZ(-15deg)`,
               }}
               willChange={"transform"}
             />
@@ -145,6 +186,33 @@ export default function Product() {
         </VStack>
       </VStack>
       <Box h={"10em"} />
+      <VStack
+        w={"full"}
+        mt={"-3.3em"}
+        pr={"1.1em"}
+        justifyContent={"start"}
+        alignItems={"center"}
+      >
+        <Text variant={"smallTitle"}>All In One</Text>
+        <Text variant={"smallTitle"} color={"titleGray"}>
+          Product
+        </Text>
+        <Button>
+          <HStack>
+            <BgText text="Learn more" />
+            <Image
+              w={"1.2em"}
+              src={greenArrow}
+              style={{
+                transition: "0.3s ease transform",
+              }}
+              _hover={{
+                transform: "translateX(0.3em)",
+              }}
+            />
+          </HStack>
+        </Button>
+      </VStack>
     </VStack>
   );
 }

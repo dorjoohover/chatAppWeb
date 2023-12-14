@@ -11,6 +11,8 @@ type ButtonType = {
   scale?: boolean;
   h?: string;
   w?: string;
+  iconW?: string;
+  iconH?: string;
 };
 
 const CustomButton: FC<ButtonType> = ({
@@ -91,20 +93,24 @@ export const IconButton: FC<ButtonType> = ({
 
   h = "full",
   w = "auto",
+  iconW,
+  iconH,
 }) => {
   return (
     <Button w={w} h={h} p={0} onClick={onClick}>
-      <Text variant={"text"} mr={'1em'}>{text}</Text>
+      <Text variant={"text"} mr={"1em"}>
+        {text}
+      </Text>
       <Box
-        w={"2.7em"}
-        h={"2.7em"}
+        w={iconW ?? "2.7em"}
+        h={iconH ?? "2.7em"}
         p={"0.1em"}
         className={type ?? "btn-text-green"}
-        display={'flex'}
-        alignItems={'center'}
-        justifyContent={'center'}
+        display={"flex"}
+        alignItems={"center"}
+        justifyContent={"center"}
       >
-        <Image src={iconArrow} w={'43%'}/>
+        <Image src={iconArrow} w={"43%"} />
       </Box>
     </Button>
   );

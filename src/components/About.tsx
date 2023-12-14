@@ -18,6 +18,8 @@ import { ScrollTrigger } from "gsap/all";
 import { BgText } from "./Text";
 import AboutBottom from "./AboutBottom";
 import Product from "./Product";
+import ProductButtom from "./ProductBottom";
+import Community from "./Community";
 export default function About() {
   const left = useRef(null);
   const right = useRef(null);
@@ -177,6 +179,10 @@ export default function About() {
       <Box h={"2em"} />
       <AboutBottom />
       <Product />
+      <ProductButtom/>
+      {/* <Box h={'50vh'}/> */}
+      <Community/>
+      <Box h={"5em"} />
     </VStack>
   );
 }

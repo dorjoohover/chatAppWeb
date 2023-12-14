@@ -38,6 +38,7 @@ export const bottom = [
   imgHeader4,
   imgHeader5,
 ];
+export const productBottom = [imgHeader1, imgHeader2, imgHeader3];
 
 export const productTop = [imgHeader1, imgHeader2];
 
