@@ -6,7 +6,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import { imgHeader1 } from "@/global/assets";
 import { BgText } from "./Text";
-import { IconButton } from "./Button";
+import CustomButton, { IconButton } from "./Button";
 
 export default function Community() {
   const trigger = useRef(null);
@@ -76,18 +76,6 @@ export default function Community() {
   return (
     <Box>
       <VStack w={"full"} pos={"relative"}>
-        <VStack
-          top={"5%"}
-          pos={"absolute"}
-          left={0}
-          justifyContent={"start"}
-          alignItems={"start"}
-        >
-          <Text variant={"smallTitle"}>Improve your</Text>
-          <Text variant={"smallTitle"} color={"titleGray"}>
-            Communication
-          </Text>
-        </VStack>
         <HStack
           w={"full"}
           h={"200vh"}
@@ -95,6 +83,21 @@ export default function Community() {
           alignItems={"center"}
           ref={trigger}
         >
+          <VStack
+            top={{
+              md: "5%",
+              sm: "15%",
+            }}
+            pos={"absolute"}
+            left={"-10%"}
+            justifyContent={"start"}
+            alignItems={"start"}
+          >
+            <Text variant={"smallTitle"}>Improve your</Text>
+            <Text variant={"smallTitle"} color={"titleGray"}>
+              Communication
+            </Text>
+          </VStack>
           <Box
             ref={header}
             pos={"absolute"}
@@ -135,19 +138,23 @@ export default function Community() {
               })}
             </HStack>
           </Box>
+          <VStack
+            top={{
+              xl: "50%",
+              lg: "40%",
+              sm: "35%",
+            }}
+            pos={"absolute"}
+            right={"-10%"}
+            justifyContent={"start"}
+            alignItems={"start"}
+          >
+            <Text variant={"smallTitle"}>Easy</Text>
+            <Text variant={"smallTitle"} color={"titleGray"}>
+              & unique
+            </Text>
+          </VStack>
         </HStack>
-        <VStack
-          bottom={"0"}
-          pos={"absolute"}
-          right={0}
-          justifyContent={"start"}
-          alignItems={"start"}
-        >
-          <Text variant={"smallTitle"}>Easy</Text>
-          <Text variant={"smallTitle"} color={"titleGray"}>
-            & unique
-          </Text>
-        </VStack>
       </VStack>
       <VStack w={"full"} justifyContent={"center"} ref={bottom}>
         <VStack ref={end}>
@@ -165,8 +172,62 @@ export default function Community() {
           </HStack>
         </VStack>
         <IconButton text="" iconH="6.06em" iconW="6.06em" onClick={() => {}} />
-       
       </VStack>
+      <HStack
+        w={"full"}
+        gap={8}
+        mt={"2em"}
+        flexDir={{
+          md: "row",
+          base: "column",
+        }}
+      >
+        <VStack
+          w={"full"}
+          flex={1}
+          alignItems={"start"}
+          flexDir={{
+            base: "row",
+            md: "column",
+          }}
+          justifyContent={{
+            md: "center",
+            base: "start",
+          }}
+        >
+          <Text variant={"displayLight"}>How</Text>
+          <Text variant={"displayLight"} color={"titleGray"}>
+            It
+          </Text>
+          <Text variant={"displayLight"}>Works</Text>
+        </VStack>
+        <Box
+          flex={{
+            md: 2,
+            base: "auto",
+          }}
+          borderRadius={"2em"}
+          w={"full"}
+          maxW={"16em"}
+          h={"21em"}
+          overflow={"hidden"}
+        >
+          <Image src={imgHeader1} w={"full"} h={"full"} objectFit={"cover"} />
+        </Box>
+        <VStack
+          justifyContent={"center"}
+          w={"full"}
+          flex={1}
+          alignItems={"start"}
+        >
+          <Text color={"titleGray"} variant={"label"} mb={4}>
+            We elevate <span className="text-white">phenomenal</span> solutions
+            for growth by translating their future potential into a strategic
+            brand narrative
+          </Text>
+          <CustomButton onClick={() => {}} text="Get Clixr" />
+        </VStack>
+      </HStack>
     </Box>
   );
 }

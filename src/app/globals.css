@@ -120,3 +120,11 @@ input:focus {
 
   }
 }
+
+
+@media screen and (max-width: 48em) {
+  body {
+    font-size: 3.06vw !important;
+    line-height: 1.3;
+  }
+}

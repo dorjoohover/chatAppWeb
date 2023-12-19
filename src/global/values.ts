@@ -50,3 +50,27 @@ export const aboutsLeft = [
   "https://uploads-ssl.webflow.com/64a6caa646429ed756eb2d03/64a6cdff000962bbfb4a9cea_card1.jpg",
   "https://uploads-ssl.webflow.com/64a6caa646429ed756eb2d03/64a6cdff000962bbfb4a9cd5_sc3.jpg",
 ];
+
+export const questions = [
+  {
+    title: "How can our SaaS product benefit your business?",
+    value:
+      "Our SaaS product can benefit your business by automating time-consuming tasks, improving collaboration and communication between team members, and providing real-time data insights to help you make informed business decisions. It can also reduce costs associated with on-premise software solutions.",
+  },
+
+  {
+    title: "How easy is it to use our SaaS product?",
+    value:
+      "Our SaaS product is designed to be intuitive and user-friendly. We offer extensive documentation and customer support to help you get started quickly and easily. Additionally, our product is regularly updated with new features and improvements based on customer feedback.",
+  },
+  {
+    title: "What is our SaaS product?",
+    value:
+      "Our SaaS product is a cloud-based software solution designed to streamline your business operations and improve productivity. It is a flexible and scalable platform that can be customized to fit your unique needs.",
+  },
+  {
+    title: "Can our SaaS product integrate with other software systems?",
+    value:
+      "Yes, our SaaS product is designed to integrate with a wide range of other software systems, including popular CRM, ERP, and accounting software. We offer robust APIs and developer tools to make integration as seamless as possible.",
+  },
+];

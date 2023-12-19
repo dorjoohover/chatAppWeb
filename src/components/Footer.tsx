@@ -10,15 +10,18 @@ import {
   Link,
 } from "@chakra-ui/react";
 import CustomButton from "./Button";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { imgHeader1 } from "@/global/assets";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/all";
 import { BgText } from "./Text";
+import { questions } from "@/global/values";
+import { FaMinus } from "react-icons/fa";
 export default function FooterPage() {
   const trigger = useRef(null);
   const first = useRef(null);
   const second = useRef(null);
+  const [active, setActive] = useState<number | undefined>(undefined);
   useEffect(() => {
     let ctx = gsap.context(() => {
       gsap.registerPlugin(ScrollTrigger);
@@ -68,6 +71,7 @@ export default function FooterPage() {
 
     return () => ctx.revert();
   }, []);
+
   return (
     <VStack
       w={"full"}
@@ -130,6 +134,81 @@ export default function FooterPage() {
             </Text>
             <Text variant={"title"}>questions</Text>
           </HStack>
+          <VStack w={"full"} gap={6}>
+            {questions.map((question, i) => {
+              return (
+                <VStack
+                  w={"full"}
+                  gap={4}
+                  cursor={"pointer"}
+                  onClick={() => {
+                    if (active == i) {
+                      setActive(undefined);
+                    } else {
+                      setActive(i);
+                    }
+                  }}
+                >
+                  <HStack w={"full"} justifyContent={"space-between"}>
+                    <Text fontSize={"1em"} color={"white"} fontWeight={500}>
+                      {question.title}
+                    </Text>
+                    <Box
+                      style={{
+                        backgroundImage:
+                          "linear-gradient(284deg, #738aff, rgba(0, 0, 0, 0) 84%)",
+                      }}
+                      w={"1.4em"}
+                      h={"1.4em"}
+                      borderRadius={"100%"}
+                      p={"0.1em"}
+                      fontSize={"1em"}
+                    >
+                      <Box
+                        cursor={"pointer"}
+                        background={"black"}
+                        display={"flex"}
+                        justifyContent={"center"}
+                        pos={"relative"}
+                        alignItems={"center"}
+                        borderRadius={"100%"}
+                        w={"full"}
+                        h={"full"}
+                        style={{
+                          backgroundImage:
+                            "linear-gradient(225deg, #738aff, rgba(115, 138, 255, 0) 57%)",
+                        }}
+                      >
+                        <FaMinus color="white" />
+                        <FaMinus
+                          className="absolute"
+                          style={{
+                            top: "50%",
+                            left: "50%",
+                            transform: `translate(-50%, -50% ) rotateZ(${
+                              active == i ? "90deg" : "0deg"
+                            })`,
+                            transition: "transform 0.3s ease",
+                            color: "white",
+
+                            display:
+                              active != undefined && active == i
+                                ? "block"
+                                : "none",
+                          }}
+                        />
+                      </Box>
+                    </Box>
+                  </HStack>
+                  {active != undefined && active == i && (
+                    <Text fontSize={"0.55em"} color={"#ccc"}>
+                      {question.value}
+                    </Text>
+                  )}
+                </VStack>
+              );
+            })}
+          </VStack>
         </VStack>
         <HStack
           w={"full"}
