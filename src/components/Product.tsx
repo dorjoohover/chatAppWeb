@@ -26,8 +26,8 @@ export default function Product() {
         defaults: { duration: 1 },
         scrollTrigger: {
           trigger: trigger.current,
-          start: "-500 top",
-          end: "1000 bottom",
+          start: "top-=200px top",
+          end: "bottom bottom",
           scrub: true,
 
           onUpdate: (self) => {},
@@ -37,8 +37,8 @@ export default function Product() {
         defaults: { duration: 1 },
         scrollTrigger: {
           trigger: trigger.current,
-          start: "-500 top",
-          end: "1000 bottom",
+          start: "top-=200px top",
+          end: "bottom bottom",
           scrub: true,
 
           onUpdate: (self) => {},
@@ -48,8 +48,8 @@ export default function Product() {
         defaults: { duration: 1 },
         scrollTrigger: {
           trigger: trigger.current,
-          start: "-500 top",
-          end: "1000 bottom",
+          start: "top-=200px top",
+          end: "bottom bottom",
           scrub: true,
 
           onUpdate: (self) => {},
@@ -59,13 +59,13 @@ export default function Product() {
         img1.current,
 
         {
-          translateX: "1.7em",
+          translateX: "1.7vw",
           translateY: "-2em",
 
           rotateZ: "-30deg",
         },
         {
-          translateX: "1.7em",
+          translateX: "1.7vw",
           translateY: "0.54em",
 
           rotateZ: "-16deg",
@@ -89,13 +89,13 @@ export default function Product() {
         img2.current,
 
         {
-          translateX: "-1.8em",
+          translateX: "-1.8vw",
           translateY: "-2em",
           rotateZ: "20deg",
           rotateY: "0deg",
         },
         {
-          translateX: "-1.8em",
+          translateX: "-1.8vw",
           translateY: "2.4em",
           rotateZ: "24deg",
           rotateY: "14deg",
@@ -107,14 +107,37 @@ export default function Product() {
   }, []);
   return (
     <VStack w={"full"} justifyContent={"center"} alignItems={"start"}>
-      <Text variant={"display"} fontWeight={500} color={"titleGray"}>
+      <Text
+      
+        fontWeight={500}
+        fontSize={{
+          md: '4em',
+          base: "2.5em",
+        }}
+        color={"titleGray"}
+      >
         {slogan}
       </Text>
       <HStack alignItems={"center"} gap={"1em"} mb={"2em"}>
-        <Text variant={"display"} fontWeight={500}>
+        <Text
+           fontSize={{
+            md: '4em',
+            base: "2.5em",
+          }}
+          color={'white'}
+          fontWeight={500}
+        >
           {product}
         </Text>
-        <CustomButton onClick={() => {}} h="4em" w="9em" text="Get Clixr" />
+        <CustomButton onClick={() => {}} h={{
+          md: "4em",
+          base: "2.5em"
+        }} w={
+          {
+            md : "9em",
+            base : '7em'
+          }
+        } text="Get Clixr" />
       </HStack>
       <VStack mt={"3.8em"} pos={"relative"} ref={trigger} w={"full"}>
         <Box
@@ -126,33 +149,54 @@ export default function Product() {
           <Image
             src={imgHeader1}
             ref={img1}
-            alt="product top 1 "
-            w={"9.6em"}
-            h={"9.6em"}
-            objectFit={"cover"}
-            borderRadius={"1.6em"}
             style={{
+              transition:'0.3s ease all',
               transformStyle: "preserve-3d",
             }}
+            alt="product top 1 "
+            w={{
+              md: "9.6em",
+              base: '8em'
+            }}
+            h={{
+              md: "9.6em",
+              base: '8em'
+            }}
+            objectFit={"cover"}
+            borderRadius={"1.6em"}
+           
             willChange={"transform"}
           />
           <Image
             src={imgHeader2}
             ref={img2}
             alt="product top 2 "
-            w={"11em"}
-            h={"11em"}
+            w={{
+              md: "11em",
+              base: '9em'
+            }}
+            h={{
+              md: "11em",
+              base: '9em'
+            }}
             objectFit={"cover"}
             borderRadius={"1.6em"}
             style={{
+              transition:'0.3s ease all',
               transformStyle: "preserve-3d",
             }}
             willChange={"transform"}
           />
         </Box>
-        <VStack pos={"relative"} mt={"-1.5em"} w={"full"}>
+        <VStack pos={"relative"} mt={{
+          md: "-1.5em",
+          base: '3em'
+        }} w={"full"}>
           <VStack
-            mt={"-3.3em"}
+            mt={{
+              md: "-3.3em",
+              base: '5em'
+            }}
             pr={"1.1em"}
             justifyContent={"start"}
             alignItems={"start"}
@@ -168,16 +212,27 @@ export default function Product() {
             display={"flex"}
             justifyContent={"center"}
             alignItems={"center"}
+            mt={{
+              md: 0,
+              base: '-6em'
+            }}
           >
             <Image
               ref={img3}
               src={imgHeader3}
               alt="product top 3 "
-              w={"13.4em"}
-              h={"13.4em"}
+              w={{
+                md: "13.4em",
+                base: '11em'
+              }}
+              h={{
+                md: "13.4em",
+                base: '11em'
+              }}
               objectFit={"cover"}
               borderRadius={"1.6em"}
               style={{
+                transition:'0.3s ease all',
                 transformStyle: "preserve-3d",
               }}
               willChange={"transform"}

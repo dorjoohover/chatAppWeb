@@ -15,6 +15,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <title>The Hover</title>
+      </head>
       <body>
         <ChakraProvider theme={theme} cssVarsRoot={undefined}>
 

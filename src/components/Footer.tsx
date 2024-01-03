@@ -29,8 +29,8 @@ export default function FooterPage() {
         defaults: { duration: 1 },
         scrollTrigger: {
           trigger: trigger.current,
-          start: "-500 top",
-          end: "bottom bottom",
+          start: "top-=400px ",
+          end: "bottom-=600px ",
           scrub: true,
 
           onUpdate: (self) => {},
@@ -40,8 +40,8 @@ export default function FooterPage() {
         defaults: { duration: 1 },
         scrollTrigger: {
           trigger: trigger.current,
-          start: "-500 top",
-          end: "bottom bottom",
+          start: "top-=400px ",
+          end: "bottom-=600px ",
           scrub: true,
 
           onUpdate: (self) => {},
@@ -81,18 +81,57 @@ export default function FooterPage() {
       borderTopRightRadius={"3.8em"}
       borderTopLeftRadius={"3.8em"}
     >
-      <VStack w={"full"} px={"5em"}>
+      <VStack
+        w={"full"}
+        px={{
+          md: "5em",
+          base: "2.4em",
+        }}
+      >
         <Box h={"6.5em"} />
-        <HStack w={"full"} alignItems={"start"} gap={"4em"}>
-          <VStack flex={1} alignItems={"start"}>
-            <Text variant={"title"} fontWeight={"bold"} mb={4}>
+        <HStack
+          w={"full"}
+          alignItems={"start"}
+          flexDir={{
+            md: "row",
+            base: "column",
+          }}
+          gap={"4em"}
+        >
+          <VStack
+            flex={1}
+            alignItems={{
+              md: "start",
+              base: "center",
+            }}
+            w={"full"}
+            justifyContent={"space-between"}
+            flexDir={{
+              md: "column",
+              base: "row",
+            }}
+          >
+            <Text
+              variant={{
+                md: "title",
+                base: "smallTitle",
+              }}
+              fontWeight={"bold"}
+              mb={4}
+            >
               What you’ll get
             </Text>
             <CustomButton
               type="btn-orange"
               onClick={() => {}}
-              h="4em"
-              w="9em"
+              h={{
+                md: "4em",
+                base: "2.5em",
+              }}
+              w={{
+                md: "9em",
+                base: "7em",
+              }}
               text="Get Clixr"
             />
           </VStack>
@@ -115,8 +154,14 @@ export default function FooterPage() {
                 backgroundImage:
                   "linear-gradient(198deg, #59fff1, rgba(94, 234, 244, .82) 13%, rgba(104, 189, 249, .44) 32%, rgba(112, 152, 253, .12) 48%, rgba(115, 138, 255, 0) 58%)",
               }}
-              px={"3.6em"}
-              py={"4.05em"}
+              px={{
+                md: "3.6em",
+                base: "2.5em",
+              }}
+              py={{
+                md: "4.05em",
+                base: "3.05em",
+              }}
               alignItems={"start"}
             >
               <Text variant={"text"}>High-Quality Assets</Text>
@@ -125,13 +170,27 @@ export default function FooterPage() {
             </VStack>
           </VStack>
         </HStack>
-        <Box h={"3.7em"} />
+        <Box
+          h={{
+            md: "3.7em",
+            base: "1em",
+          }}
+        />
         <VStack w={"full"} alignItems={"start"}>
-          <HStack alignItems={"start"} mb={"0.9em"}>
-            <Text variant={"title"}>Frequently</Text>
-            <Text variant={"title"} color={"titleGray"}>
-              asked
-            </Text>
+          <HStack
+            alignItems={"start"}
+            mb={"0.9em"}
+            flexDir={{
+              md: "row",
+              base: "column",
+            }}
+          >
+            <HStack>
+              <Text variant={"title"}>Frequently</Text>
+              <Text variant={"title"} color={"titleGray"}>
+                asked
+              </Text>
+            </HStack>
             <Text variant={"title"}>questions</Text>
           </HStack>
           <VStack w={"full"} gap={6}>
@@ -148,6 +207,7 @@ export default function FooterPage() {
                       setActive(i);
                     }
                   }}
+                  key={i}
                 >
                   <HStack w={"full"} justifyContent={"space-between"}>
                     <Text fontSize={"1em"} color={"white"} fontWeight={500}>
@@ -180,19 +240,18 @@ export default function FooterPage() {
                         }}
                       >
                         <FaMinus color="white" />
+
                         <FaMinus
                           className="absolute"
                           style={{
                             top: "50%",
                             left: "50%",
-                            transform: `translate(-50%, -50% ) rotateZ(${
-                              active == i ? "90deg" : "0deg"
-                            })`,
+                            transform: `translate(-50%, -50% ) rotateZ(90deg)`,
                             transition: "transform 0.3s ease",
                             color: "white",
 
                             display:
-                              active != undefined && active == i
+                              active == undefined || active != i
                                 ? "block"
                                 : "none",
                           }}
@@ -215,6 +274,10 @@ export default function FooterPage() {
           justifyContent={"space-between"}
           gap={"0.4em"}
           ref={trigger}
+          flexDir={{
+            md: "row",
+            base: "column-reverse",
+          }}
         >
           <VStack alignItems={"start"} w={"full"} flex={1}>
             <VStack alignItems={"start"} ref={first}>
@@ -289,9 +352,15 @@ export default function FooterPage() {
           <VStack alignItems={"end"} flex={1}>
             <Box
               w={"12.1em"}
-              h={"18.4em"}
+              h={{
+                md: "18.4em",
+                base: "12.1em",
+              }}
               ref={second}
-              borderRadius={"10em"}
+              borderRadius={{
+                md: "10em",
+                base: "100%",
+              }}
               overflow={"hidden"}
             >
               <Image
@@ -325,6 +394,18 @@ export default function FooterPage() {
           }}
           bg={"black"}
           borderRadius={"2em"}
+          alignItems={{
+            md: "start",
+            base: "center",
+          }}
+          flexDir={{
+            md: "row",
+            base: "column",
+          }}
+          py={{
+            md: 0,
+            base: "2em",
+          }}
         >
           <HStack flex={2} w={"full"}>
             <VStack alignItems={"start"} flex={1}>
@@ -364,7 +445,14 @@ export default function FooterPage() {
               </Link>
             </VStack>
           </HStack>
-          <Box w={"full"} flex={1} py={"1.5em"}>
+          <Box
+            w={"full"}
+            flex={1}
+            py={"1.5em"}
+            display={"flex"}
+            justifyContent={"center"}
+            alignItems={"center"}
+          >
             <CustomButton
               text=""
               onClick={() => {}}
@@ -387,7 +475,10 @@ export default function FooterPage() {
                     display={"flex"}
                     justifyContent={"center"}
                     alignItems={"center"}
-                    fontSize={"1.5em"}
+                    fontSize={{
+                      md: "1.5em",
+                      base: "0.7em",
+                    }}
                   >
                     Get Glixr
                   </Box>
@@ -397,9 +488,15 @@ export default function FooterPage() {
           </Box>
           <VStack
             h={"full"}
-            justifyContent={"end"}
+            justifyContent={{
+              md: "end",
+              base: "center",
+            }}
             alignItems={"start"}
-            ml={"auto"}
+            ml={{
+              md: "auto",
+              base: 0,
+            }}
           >
             <HStack>
               <Text variant="smallLabel">Design & Development by</Text>

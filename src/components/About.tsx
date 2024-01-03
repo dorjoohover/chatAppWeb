@@ -20,6 +20,7 @@ import AboutBottom from "./AboutBottom";
 import Product from "./Product";
 import ProductButtom from "./ProductBottom";
 import Community from "./Community";
+
 export default function About() {
   const left = useRef(null);
   const right = useRef(null);
@@ -72,10 +73,25 @@ export default function About() {
       overflow={"hidden"}
       bg={"black"}
       borderRadius={"3.8em"}
-      px={"5em"}
+      px={{
+        md: "5em",
+        base: "2em",
+      }}
     >
-      <Box h={"6.5em"} />
-      <HStack w={"full"} alignItems={"start"}>
+      <Box
+        h={{
+          md: "6.5em",
+          base: "2em",
+        }}
+      />
+      <HStack
+        w={"full"}
+        alignItems={"start"}
+        flexDir={{
+          md: "row",
+          base: "column",
+        }}
+      >
         <Box flex={2}>
           <Text variant={"text"}>{about}</Text>
         </Box>
@@ -87,8 +103,31 @@ export default function About() {
       </HStack>
       <Box h={"3.7em"} />
 
-      <HStack w={"full"} justifyContent={"space-between"} gap={"0.4em"}>
-        <Box ref={left} pos={"relative"} h={"81vh"} maxH={"20em"} w={"full"}>
+      <HStack
+        w={"full"}
+        justifyContent={"space-between"}
+        flexDir={{
+          md: "row",
+          base: "column",
+        }}
+        gap={"0.4em"}
+      >
+        <Box
+          ref={left}
+          pos={"relative"}
+          h={"81vh"}
+          maxHeight={{
+            base: "20em",
+            md: "20em",
+          }}
+          width={{
+            md: "full",
+            base: "14em",
+          }}
+          style={{
+            transition: "0.3s ease all",
+          }}
+        >
           {aboutsLeft.map((about, i) => {
             return (
               <Box
@@ -116,7 +155,11 @@ export default function About() {
           })}
         </Box>
         <VStack justifyContent={"center"}>
-          <Text variant={"title"} textAlign={"center"} pb={"2em"}>
+          <Text
+            variant={"title"}
+            textAlign={"center"}
+            pb={{ md: "2em", base: "1em" }}
+          >
             {aboutTitle}
           </Text>
           <CustomButton
@@ -141,7 +184,10 @@ export default function About() {
                   display={"flex"}
                   justifyContent={"center"}
                   alignItems={"center"}
-                  fontSize={"1.5em"}
+                  fontSize={{
+                    md: "1.2em",
+                    base: "0.7em",
+                  }}
                 >
                   {register}
                 </Box>
@@ -149,7 +195,22 @@ export default function About() {
             }
           />
         </VStack>
-        <Box ref={right} pos={"relative"} h={"81vh"} maxH={"20em"} w={"full"}>
+        <Box
+          ref={right}
+          style={{
+            transition: "0.3s ease all",
+          }}
+          pos={"relative"}
+          h={"81vh"}
+          maxHeight={{
+            base: "20em",
+            md: "20em",
+          }}
+          width={{
+            md: "full",
+            base: "14em",
+          }}
+        >
           {aboutsRight.map((about, i) => {
             return (
               <Box
@@ -176,12 +237,21 @@ export default function About() {
           })}
         </Box>
       </HStack>
-      <Box h={"2em"} />
+      <Box
+        h={{
+          md: "2em",
+        }}
+      />
       <AboutBottom />
+      <Box h={{ md: "10em", base: "5em" }} />
       <Product />
-      <ProductButtom/>
-      {/* <Box h={'50vh'}/> */}
-      <Community/>
+      <ProductButtom />
+      <Box h={{
+        md: '100vh',
+        base: '50vh'
+      }}/>
+      <Community />
+      {/* <CommunityBottom /> */}
       <Box h={"5em"} />
     </VStack>
   );

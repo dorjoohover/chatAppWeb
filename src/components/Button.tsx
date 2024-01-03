@@ -9,10 +9,10 @@ type ButtonType = {
   onClick: () => void;
   type?: string;
   scale?: boolean;
-  h?: string;
-  w?: string;
-  iconW?: string;
-  iconH?: string;
+  h?: string | { md: string; base: string; };
+  w?: string | { md: string; base: string; };
+  iconW?: string | { md: string; base: string; };
+  iconH?: string | { md: string; base: string; };
 };
 
 const CustomButton: FC<ButtonType> = ({
@@ -74,10 +74,16 @@ const CustomButton: FC<ButtonType> = ({
         }}
         zIndex={100}
         as="span"
-        top={"-50%"}
+        top={{
+          md: "-50%",
+          base: "-20%",
+        }}
         left={"-20%"}
         right={"-20%"}
-        bottom={"-50%"}
+        bottom={{
+          md: "-50%",
+          base: "-20%",
+        }}
         pos={"absolute"}
         display={"block"}
         p={0}

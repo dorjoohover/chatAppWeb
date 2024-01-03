@@ -18,8 +18,8 @@ export default function ProductButtom() {
         defaults: { duration: 1 },
         scrollTrigger: {
           trigger: trigger.current,
-          start: "top top",
-          end: "1500 bottom",
+          start: "top+=10% ",
+          end: "bottom+=200px ",
           scrub: true,
           pin: true,
           onUpdate: (self) => {},
@@ -49,14 +49,32 @@ export default function ProductButtom() {
   return (
     <HStack
       w={"full"}
-      h={"150vh"}
-      style={{
-        marginTop: "-15%",
+      h={{
+        md: "150vh",
+        base: "100vh",
       }}
+      maxH={{
+        md: "150vh",
+        base: "100vh",
+      }}
+      style={{
+        marginTop:'-15%'
+      }}
+
       alignItems={"start"}
       ref={trigger}
     >
-      <Box w={"full"} h={"150vh"}>
+      <Box
+        w={"full"}
+        h={{
+          md: "150vh",
+          base: "100vh",
+        }}
+        maxH={{
+          md: "150vh",
+          base: "100vh",
+        }}
+      >
         {productBottom.map((img, i) => {
           let ref = bottom1;
           let transform = "translateX(-50%)";

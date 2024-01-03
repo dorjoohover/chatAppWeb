@@ -16,7 +16,6 @@ export default function Home() {
       <About />
       <Description text="Technology" text1="Community" />
       <FooterPage />
-      
     </Box>
   );
 }

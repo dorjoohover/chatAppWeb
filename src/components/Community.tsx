@@ -22,8 +22,8 @@ export default function Community() {
         defaults: { duration: 1 },
         scrollTrigger: {
           trigger: trigger.current,
-          start: "top top",
-          end: "bottom bottom",
+          start: "top+=200px ",
+          end: "bottom+=250px ",
           scrub: true,
           pin: true,
           onUpdate: (self) => {
@@ -47,8 +47,8 @@ export default function Community() {
         defaults: { duration: 1 },
         scrollTrigger: {
           trigger: bottom.current,
-          start: "top-=200 ",
-          end: "bottom+=250 ",
+          start: "top-=200px ",
+          end: "bottom-=250px ",
           scrub: true,
           pin: true,
           onUpdate: (self) => {
@@ -79,17 +79,25 @@ export default function Community() {
         <HStack
           w={"full"}
           h={"200vh"}
-          mb={"6em"}
+          mb={{
+            md: "100vh",
+            base: "100vh",
+          }}
           alignItems={"center"}
           ref={trigger}
         >
           <VStack
             top={{
-              md: "5%",
-              sm: "15%",
+              xl: "10%",
+              lg: "15%",
+              md: "25%",
+              base: "25%",
             }}
             pos={"absolute"}
-            left={"-10%"}
+            left={{
+              base: "10%",
+              md: "-10%",
+            }}
             justifyContent={"start"}
             alignItems={"start"}
           >
@@ -101,10 +109,17 @@ export default function Community() {
           <Box
             ref={header}
             pos={"absolute"}
-            top={0}
+            top={{
+              xl: 0,
+              lg: "5%",
+              base: "10%",
+            }}
             h={"16.7em"}
             w={"full"}
             mt={10}
+            style={{
+              transition: "all 0.3s ease",
+            }}
           >
             <HStack
               pos={"absolute"}
@@ -140,12 +155,16 @@ export default function Community() {
           </Box>
           <VStack
             top={{
-              xl: "50%",
-              lg: "40%",
-              sm: "35%",
+              xl: "45%",
+              lg: "45%",
+              md: "45%",
+              base: "50%",
             }}
             pos={"absolute"}
-            right={"-10%"}
+            right={{
+              md: "-10%",
+              base: "10%",
+            }}
             justifyContent={"start"}
             alignItems={"start"}
           >
@@ -156,7 +175,12 @@ export default function Community() {
           </VStack>
         </HStack>
       </VStack>
-      <VStack w={"full"} justifyContent={"center"} ref={bottom}>
+      <VStack
+        w={"full"}
+        pos={"relative"}
+        justifyContent={"center"}
+        ref={bottom}
+      >
         <VStack ref={end}>
           <Image
             src={imgHeader1}
@@ -165,13 +189,26 @@ export default function Community() {
             h={"10.53em"}
             mb={4}
           />
-          <HStack gap={"1em"}>
-            <BgText text="Wow" variant="displayLight" lh={1.2} p={0} />
-            <Text variant="displayLight">Your </Text>
+          <HStack
+            gap={"1em"}
+            flexDir={{
+              md: "row",
+              base: "column",
+            }}
+          >
+            <HStack>
+              <BgText text="Wow" variant="displayLight" lh={1.2} p={0} />
+              <Text variant="displayLight">Your </Text>
+            </HStack>
             <Text variant="displayLight">Audience</Text>
           </HStack>
         </VStack>
-        <IconButton text="" iconH="6.06em" iconW="6.06em" onClick={() => {}} />
+        <IconButton
+          text=""
+          iconH={{ md: "6.06em", base: "4em" }}
+          iconW={{ md: "6.06em", base: "4em" }}
+          onClick={() => {}}
+        />
       </VStack>
       <HStack
         w={"full"}
@@ -180,6 +217,10 @@ export default function Community() {
         flexDir={{
           md: "row",
           base: "column",
+        }}
+        px={{
+          md: 0,
+          base: '2.4em'
         }}
       >
         <VStack

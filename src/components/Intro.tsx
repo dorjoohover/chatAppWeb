@@ -26,8 +26,8 @@ export default function Index() {
         scrollTrigger: {
           trigger: header.current,
           scrub: true,
-          start: "0px top",
-          end: "bottom-=400px top",
+          start: "top-=400px ",
+          end: "bottom-=400px",
         },
 
         left: "0",
@@ -37,11 +37,11 @@ export default function Index() {
         scrollTrigger: {
           trigger: header.current,
           scrub: true,
-          start: "0px bottom",
-          end: "bottom+=400px bottom",
+          start: "top-=400px ",
+          end: " bottom-=400px",
         },
 
-        left: "-30%",
+        left: "-30vh",
         ease: "power3.Out",
       }
     );
@@ -57,9 +57,18 @@ export default function Index() {
     >
       <Box h={"6.5em"} />
       <Text variant={"smallText"}>{introHeader}</Text>
-      <Text variant={"display"}>{introDisplay}</Text>
-      <Text variant={"display"}>{introDisplay1}</Text>
-      <Box h={10} />
+      <Text variant={{
+        md: "display",
+        base: 'title'
+      }}>{introDisplay}</Text>
+      <Text variant={{
+        md: "display",
+        base: 'title'
+      }}>{introDisplay1}</Text>
+      <Box h={{
+        md: 10,
+        base: 4
+      }} />
       <CustomButton
         text=""
         onClick={() => {}}
@@ -82,7 +91,10 @@ export default function Index() {
               display={"flex"}
               justifyContent={"center"}
               alignItems={"center"}
-              fontSize={"1.2em"}
+              fontSize={{
+                md: "1.2em",
+                base: "0.7em",
+              }}
             >
               {register}
             </Box>
@@ -90,7 +102,16 @@ export default function Index() {
         }
       />
 
-      <Box ref={header} pos={"relative"} h={"10.11em"} w={"full"} mt={10}>
+      <Box
+        ref={header}
+        pos={"relative"}
+        h={"10.11em"}
+        w={"full"}
+        mt={10}
+        style={{
+          transition: "all 0.3s ease",
+        }}
+      >
         <HStack pos={"absolute"} top={0} bottom={0} left={0} gap={"1.25em"}>
           {headers.map((header, i) => {
             return (

@@ -5,8 +5,6 @@ import React, { useEffect, useLayoutEffect, useState, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 export default function AboutBottom() {
- 
-
   const trigger = useRef(null);
   const bottom1 = useRef(null);
   const bottom2 = useRef(null);
@@ -22,12 +20,10 @@ export default function AboutBottom() {
         scrollTrigger: {
           trigger: trigger.current,
           start: "top top",
-          end: "2000 bottom",
+          end: "bottom+=400 bottom",
           scrub: true,
           pin: true,
-          onUpdate: (self) => {
-          
-          },
+          onUpdate: (self) => {},
         },
       });
       tl.to(
@@ -85,8 +81,25 @@ export default function AboutBottom() {
   }, []);
 
   return (
-    <HStack w={"full"} h={"200vh"} mb={"6em"} ref={trigger}>
-      <Box w={"full"} h={"150vh"}>
+    <HStack
+      w={"full"}
+      h={{
+        md: "200vh",
+        base: "150vh",
+      }}
+      maxH={{
+        md: "200vh",
+        base: "150vh",
+      }}
+      ref={trigger}
+    >
+      <Box
+        w={"full"}
+        h={{
+          md: "150vh",
+          base: "100vh",
+        }}
+      >
         {bottom.map((img, i) => {
           let ref = bottom1;
           let transform = "translateX(-7%) translateY(-48%) rotateZ(-60deg)";
@@ -126,7 +139,7 @@ export default function AboutBottom() {
               style={{
                 transformStyle: "preserve-3d",
                 transform: transform,
-                transformOrigin: '0 100%'
+                transformOrigin: "0 100%",
               }}
             />
           );
