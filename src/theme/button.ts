@@ -37,6 +37,15 @@ const Button = defineStyleConfig({
       },
       color: "white",
     },
+    default: {
+      fontSize: '24px',
+      bg: 'none',
+      _hover: {
+        bg: 'rgb(241,243,244)'
+      },
+      color: 'black',
+      padding: '12px 8px'
+    }
   },
   // The default size and variant values
   defaultProps: {

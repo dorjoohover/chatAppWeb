@@ -9,10 +9,10 @@ type ButtonType = {
   onClick: () => void;
   type?: string;
   scale?: boolean;
-  h?: string | { md: string; base: string; };
-  w?: string | { md: string; base: string; };
-  iconW?: string | { md: string; base: string; };
-  iconH?: string | { md: string; base: string; };
+  h?: string | { md: string; base: string };
+  w?: string | { md: string; base: string };
+  iconW?: string | { md: string; base: string };
+  iconH?: string | { md: string; base: string };
 };
 
 const CustomButton: FC<ButtonType> = ({
@@ -24,18 +24,18 @@ const CustomButton: FC<ButtonType> = ({
   h = "full",
   w = "auto",
 }) => {
-  const [sizes, setSizes] = useState({ x: 0, y: 0 });
+  let sizeX = 0,
+    sizeY = 0;
+  // const [sizes, setSizes] = useState({ x: 0, y: 0 });
 
   return (
     <Button w={w} h={h} p={0} onClick={onClick}>
       <Box
         style={{
-          transform: `translate3d(${sizes.x}%, ${
-            sizes.y
-          }%, 0px) rotateX(0deg) scale3d(${
-            scale && (sizes.x != 0 || sizes.y != 0) ? 0.9 : 1
+          transform: `translate3d(${sizeX}%, ${sizeY}%, 0px) rotateX(0deg) scale3d(${
+            scale && (sizeX != 0 || sizeY != 0) ? 0.9 : 1
           }, ${
-            scale && (sizes.x != 0 || sizes.y != 0) ? 0.9 : 1
+            scale && (sizeX != 0 || sizeY != 0) ? 0.9 : 1
           }, 1) rotateY(0deg) rotateZ(0deg) skew(0deg)`,
         }}
         pos={"relative"}
@@ -55,22 +55,22 @@ const CustomButton: FC<ButtonType> = ({
           let w = e.target.scrollWidth;
           let x = e.nativeEvent.layerX;
           let y = e.nativeEvent.layerY;
-
+          // console.log(x);
+          // console.log(y);
           x = ((x - w / 2) * 7) / (w / 2);
           y = ((y - h / 2) * 10) / (h / 2);
-          setSizes({ x: x, y: y });
+
+          // setSizes({ x: x, y: y });
+          sizeY = y;
+          sizeX = x;
         }}
         onMouseLeave={(e: any) => {
-          setSizes({
-            x: 0,
-            y: 0,
-          });
+          sizeY = 0;
+          sizeX = 0;
         }}
         onMouseOut={() => {
-          setSizes({
-            x: 0,
-            y: 0,
-          });
+          sizeY = 0;
+          sizeX = 0;
         }}
         zIndex={100}
         as="span"

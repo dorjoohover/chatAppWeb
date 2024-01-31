@@ -8,7 +8,9 @@ const doneWork = `${img}doneWork/`;
 const article = `${img}article/`;
 
 export const logo =
-  "https://uploads-ssl.webflow.com/64a6caa646429ed756eb2d03/64a6cdff000962bbfb4a9cb4_brand.svg";
+  "/assets/logo.png";
+export const logoWhite =
+  "/assets/logo white.png";
 
 export const imgHeader1 =
   "https://uploads-ssl.webflow.com/64a6caa646429ed756eb2d03/64a6cdff000962bbfb4a9cd0_main.jpg";

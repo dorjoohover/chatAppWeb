@@ -22,3 +22,9 @@ export const aboutTitle = "We’re Hovering Study";
 // product
 export const slogan = "Unleash Your Potential with our" 
 export const product = "Product" 
+
+
+export class SurveyStrings {
+  static recentForm = "Recent forms"
+  static lastModified = "Last modified"
+}

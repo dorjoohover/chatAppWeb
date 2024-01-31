@@ -8,6 +8,9 @@ import { Box } from "@chakra-ui/react";
 import About from "@/components/About";
 import Product from "@/components/Product";
 import FooterPage from "@/components/Footer";
+import { getAuth } from "@firebase/auth";
+import { initializeApp } from "@firebase/app";
+
 export default function Home() {
   return (
     <Box>

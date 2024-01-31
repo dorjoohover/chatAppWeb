@@ -73,6 +73,7 @@ const Text = defineStyleConfig({
 
     normal: {
       fontSize: "16px",
+      fontWeight: 500
     },
   },
 });

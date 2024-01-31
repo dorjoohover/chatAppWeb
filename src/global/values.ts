@@ -5,8 +5,12 @@ import {
   imgHeader4,
   imgHeader5,
 } from "./assets";
+import { SurveyCardActionTypes, SurveySortTypes } from "./enum";
 import { nav1, nav2, nav3 } from "./string";
-
+import { MdOutlineTextFields } from "react-icons/md";
+import { RiDeleteBin6Line } from "react-icons/ri";
+export const api = "http://localhost:5050/api/";
+export const url = "http://localhost:3000/";
 export const navbar = [
   {
     text: nav1,
@@ -74,3 +78,29 @@ export const questions = [
       "Yes, our SaaS product is designed to integrate with a wide range of other software systems, including popular CRM, ERP, and accounting software. We offer robust APIs and developer tools to make integration as seamless as possible.",
   },
 ];
+
+export class SurveyValues {
+  static sorting = [
+    {
+      type: SurveySortTypes.LASTOPENED,
+      text: "Хамгийн сүүлд нээсэн",
+    },
+    {
+      type: SurveySortTypes.TITLE,
+      text: "Гарчигаар",
+    },
+  ];
+
+  static cartActions = [
+    {
+      type: SurveyCardActionTypes.RENAME,
+      text: 'Нэр солих',
+      icon: MdOutlineTextFields 
+    },
+    {
+      type: SurveyCardActionTypes.REMOVE,
+      text: 'Устгах',
+      icon: RiDeleteBin6Line 
+    },
+  ]
+}

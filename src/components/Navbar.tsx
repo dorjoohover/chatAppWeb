@@ -1,5 +1,5 @@
 "use client";
-import { imgLogo, logo } from "@/global/assets";
+import { imgLogo, logo, logoWhite } from "@/global/assets";
 import { register } from "@/global/string";
 import { navbar } from "@/global/values";
 import { Box, Button, HStack, Image, Stack, Text } from "@chakra-ui/react";
@@ -8,7 +8,13 @@ import Link from "next/link";
 import CustomButton from "./Button";
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
+
 const Navbar = () => {
+  const router = useRouter();
+  const pathname = usePathname()
+  let textColor = pathname.split('/')[1] == "" ? "white"  : 'black'
+  let currentLogo = pathname.split('/')[1] == "" ? logoWhite  : logo
   const [active, setActive] = useState(false);
   return (
     <HStack
@@ -18,7 +24,7 @@ const Navbar = () => {
       right={0}
       zIndex={100}
       bg={{
-        lg: "",
+        lg: "transparent",
         base: "black",
       }}
     >
@@ -50,7 +56,10 @@ const Navbar = () => {
             lg: "row",
             base: "column",
           }}
-          alignItems={"start"}
+          alignItems={{
+            lg: "center",
+            base: "start",
+          }}
           w={{
             lg: "auto",
             base: "full",
@@ -59,13 +68,13 @@ const Navbar = () => {
           <Link href={"/"}>
             <Box
               h={{
-                lg: "auto",
+                lg: "100%",
                 base: "40px",
               }}
               display={"flex"}
               alignItems={"center"}
             >
-              <Image alt="Logo" h={".66em"} src={logo} />
+              <Image alt="Logo" h={".66em"} src={currentLogo} />
             </Box>
           </Link>
           <HStack
@@ -93,6 +102,7 @@ const Navbar = () => {
                   <Text
                     variant={"smallLabel"}
                     className="link"
+                    color={textColor}
                     py={{
                       lg: "1.6em",
                       base: "0.8em",
@@ -103,8 +113,20 @@ const Navbar = () => {
                 </Link>
               );
             })}
-            <Stack mb={"2em"}>
-              <CustomButton text={register} onClick={() => {}} />
+            <Stack
+              mb={"2em"}
+              display={{
+                lg: "none",
+                base: "flex",
+              }}
+            >
+              <Link href={'/auth'}>
+              <CustomButton
+                text={register}
+                onClick={() => {
+                  router.push("/auth");
+                }}
+              /></Link>
             </Stack>
           </HStack>
         </HStack>
@@ -130,7 +152,12 @@ const Navbar = () => {
             base: "none",
           }}
         >
-          <CustomButton text={register} onClick={() => {}} />
+          <CustomButton
+            text={register}
+            onClick={() => {
+              router.push("/auth");
+            }}
+          />
         </Box>
       </HStack>
     </HStack>
