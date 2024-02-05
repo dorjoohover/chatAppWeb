@@ -35,12 +35,9 @@ async function getDataById(id: string): Promise<SurveyModel> {
 }
 export default function Page({ params }: { params: { slug: string } }) {
   const [data, setData] = useState<SurveyModel>();
-  const [loading, setLoading] = useState<boolean>(false);
+
   const getData = async () => {
-    setLoading(true);
-    await getDataById(params.slug)
-      .then((d) => setData(d))
-      .finally(() => setLoading(false));
+    await getDataById(params.slug).then((d) => setData(d));
   };
 
   useEffect(() => {

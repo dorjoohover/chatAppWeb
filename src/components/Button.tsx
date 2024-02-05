@@ -24,18 +24,18 @@ const CustomButton: FC<ButtonType> = ({
   h = "full",
   w = "auto",
 }) => {
-  let sizeX = 0,
-    sizeY = 0;
-  // const [sizes, setSizes] = useState({ x: 0, y: 0 });
+  const [sizes, setSizes] = useState({ x: 0, y: 0 });
 
   return (
     <Button w={w} h={h} p={0} onClick={onClick}>
       <Box
         style={{
-          transform: `translate3d(${sizeX}%, ${sizeY}%, 0px) rotateX(0deg) scale3d(${
-            scale && (sizeX != 0 || sizeY != 0) ? 0.9 : 1
+          transform: `translate3d(${sizes.x}%, ${
+            sizes.y
+          }%, 0px) rotateX(0deg) scale3d(${
+            scale && (sizes.x != 0 || sizes.y != 0) ? 0.9 : 1
           }, ${
-            scale && (sizeX != 0 || sizeY != 0) ? 0.9 : 1
+            scale && (sizes.x != 0 || sizes.y != 0) ? 0.9 : 1
           }, 1) rotateY(0deg) rotateZ(0deg) skew(0deg)`,
         }}
         pos={"relative"}
@@ -60,17 +60,17 @@ const CustomButton: FC<ButtonType> = ({
           x = ((x - w / 2) * 7) / (w / 2);
           y = ((y - h / 2) * 10) / (h / 2);
 
-          // setSizes({ x: x, y: y });
-          sizeY = y;
-          sizeX = x;
+          setSizes({ x: x, y: y });
+          sizes.y = y;
+          sizes.x = x;
         }}
         onMouseLeave={(e: any) => {
-          sizeY = 0;
-          sizeX = 0;
+          sizes.y = 0;
+          sizes.x = 0;
         }}
         onMouseOut={() => {
-          sizeY = 0;
-          sizeX = 0;
+          sizes.y = 0;
+          sizes.x = 0;
         }}
         zIndex={100}
         as="span"
