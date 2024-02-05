@@ -1,5 +1,4 @@
 import { DateFormat } from "@/global/functions";
-import { addToCart } from "@/lib/action";
 import { SurveyModel } from "@/models/Survey.model";
 import {
   Box,
@@ -30,6 +29,7 @@ import { useState } from "react";
 export const GridCard = ({ data }: { data: SurveyModel }) => {
   const format = new DateFormat();
   const [menu, setMenu] = useState<boolean>(false);
+  
   return (
     <Link href={`/survey/${data._id}`} onClick={() => setMenu(false)}>
       <Card maxW="sm">

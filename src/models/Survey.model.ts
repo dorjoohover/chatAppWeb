@@ -15,22 +15,22 @@ export interface SurveyDetailModel {
 
   id: number;
 
-  content: ContentDetailModel[];
+  content?: ContentDetailModel[];
 
   question?: string;
 
-  list?: string[];
-
-  answer: string;
+  list?: ContentDetailModel[];
+  required: boolean
+  answer?: string;
 }
 
 export interface SurveyModel {
   _id?: string;
   title?: string;
 
-  content?: ContentDetailModel[];
+  content?: ContentDetailModel;
 
-  values?: SurveyDetailModel;
+  values?: SurveyDetailModel[];
 
   type: SurveyTypes;
 

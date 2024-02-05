@@ -5,10 +5,17 @@ import {
   imgHeader4,
   imgHeader5,
 } from "./assets";
-import { SurveyCardActionTypes, SurveySortTypes } from "./enum";
+import {
+  SurveyCardActionTypes,
+  SurveySortTypes,
+  SurveyTypes,
+  TextBoxTypes,
+} from "./enum";
 import { nav1, nav2, nav3 } from "./string";
-import { MdOutlineTextFields } from "react-icons/md";
+import { MdOutlineArrowDropDownCircle, MdOutlineShortText, MdOutlineTextFields } from "react-icons/md";
+import { BsTextParagraph } from "react-icons/bs";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import { IoIosCheckboxOutline, IoMdRadioButtonOn } from "react-icons/io";
 export const api = "http://localhost:5050/api/";
 export const url = "http://localhost:3000/";
 export const navbar = [
@@ -94,13 +101,51 @@ export class SurveyValues {
   static cartActions = [
     {
       type: SurveyCardActionTypes.RENAME,
-      text: 'Нэр солих',
-      icon: MdOutlineTextFields 
+      text: "Нэр солих",
+      icon: MdOutlineTextFields,
     },
     {
       type: SurveyCardActionTypes.REMOVE,
-      text: 'Устгах',
-      icon: RiDeleteBin6Line 
+      text: "Устгах",
+      icon: RiDeleteBin6Line,
     },
-  ]
+  ];
+
+  static tabs = [
+    {
+      type: SurveyTypes.QUESTION,
+      text: "Асуултууд",
+    },
+    {
+      type: SurveyTypes.ANSWER,
+      text: "Хариултууд",
+    },
+  ];
+  static inputs = [
+    {
+      type: TextBoxTypes.SHORT,
+      text: "Богино хариулт",
+      icon: MdOutlineShortText 
+    },
+    {
+      type: TextBoxTypes.PARAGRAPH,
+      text: "Догол мөр",
+      icon: BsTextParagraph
+    },
+    {
+      type: TextBoxTypes.MULTIPLE,
+      text: "Олон сонголт",
+      icon: IoMdRadioButtonOn
+    },
+    {
+      type: TextBoxTypes.CHECKBOX,
+      text: "Шалгах хайрцаг",
+      icon: IoIosCheckboxOutline
+    },
+    {
+      type: TextBoxTypes.DROPDOWN,
+      text: "Уналт",
+      icon: MdOutlineArrowDropDownCircle
+    },
+  ];
 }

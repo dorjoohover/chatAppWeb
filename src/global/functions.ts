@@ -2,8 +2,9 @@ import { auth, provider } from "@/firebase";
 import { initializeApp } from "@firebase/app";
 import { getAuth, signInWithPopup } from "@firebase/auth";
 import { GoogleAuthProvider } from "@firebase/auth/cordova";
-import { SurveySortTypes } from "./enum";
+import { SurveySortTypes, TextBoxTypes } from "./enum";
 import { SurveyValues } from "./values";
+import { IconType } from "react-icons";
 
 export type FilterType = {
   value: string;
@@ -33,5 +34,11 @@ export class DateFormat {
 export class SurveyFunctions {
   surveySortTypeName(value: SurveySortTypes): string {
     return SurveyValues.sorting.find((f) => f.type == value)!.text;
+  }
+  inputText(value: TextBoxTypes):string {
+    return SurveyValues.inputs.find((f) => f.type == value)!.text
+  }
+  inputIcon(value: TextBoxTypes):IconType {
+    return SurveyValues.inputs.find((f) => f.type == value)!.icon
   }
 }

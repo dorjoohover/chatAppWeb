@@ -2,37 +2,67 @@
 import { auth, provider } from "@/firebase";
 import { signInWithPopup } from "@firebase/auth";
 import { GoogleAuthProvider } from "@firebase/auth/cordova";
-import { api } from "@/global/values";
-import { Tab, TabList, TabPanel, TabPanels, Tabs, Text, VStack } from "@chakra-ui/react";
-import CustomButton from "@/components/Button";
-import { useFormState } from "react-dom";
-import { addToCart } from "@/lib/action";
-import { AddToCartForm } from "@/components/survey/form";
+import { SurveyValues, api } from "@/global/values";
+import {
+  Box,
+  Center,
+  Tab,
+  TabIndicator,
+  TabList,
+  TabPanel,
+  TabPanels,
+  Tabs,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
+import QuestionPage from "./question";
+import { SurveyModel } from "@/models/Survey.model";
+import { Suspense, useEffect, useState } from "react";
+import { Loader } from "@/components/loader";
+import { ErrorMessages } from "@/global/string";
 
-type Form = {
-  title: string;
-  description: string;
-};
+async function getDataById(id: string): Promise<SurveyModel> {
+  try {
+    ("use server");
+    const res = await fetch(`/api/survey/${id}`, {
+      method: "POST",
+    }).then((d) => d.json());
 
-async function increment(previousState: Form, formData: any) {
-  return previousState;
+    return res;
+  } catch (error) {
+    throw new Error(ErrorMessages.occured);
+  }
 }
-
 export default function Page({ params }: { params: { slug: string } }) {
-  const [message, formAction] = useFormState(addToCart, null);
+  const [data, setData] = useState<SurveyModel>();
+  const [loading, setLoading] = useState<boolean>(false);
+  const getData = async () => {
+    setLoading(true);
+    await getDataById(params.slug)
+      .then((d) => setData(d))
+      .finally(() => setLoading(false));
+  };
 
+  useEffect(() => {
+    getData();
+  }, []);
   return (
-    <VStack>
-      <Tabs>
+    <Box>
+      <Tabs variant="unstyled" align="center">
         <TabList>
-          <Tab>One</Tab>
-          <Tab>Two</Tab>
-          <Tab>Three</Tab>
+          {SurveyValues.tabs.map((tab) => (
+            <Tab key={tab.type}>{tab.text}</Tab>
+          ))}
         </TabList>
-
+        <TabIndicator
+          mt="-1.5px"
+          height="2px"
+          bg="blue.500"
+          borderRadius="1px"
+        />
         <TabPanels>
           <TabPanel>
-            <p>one!</p>
+            {data != undefined && <QuestionPage data={data!} />}
           </TabPanel>
           <TabPanel>
             <p>two!</p>
@@ -42,10 +72,14 @@ export default function Page({ params }: { params: { slug: string } }) {
           </TabPanel>
         </TabPanels>
       </Tabs>
-      <AddToCartForm itemID="1" itemTitle="JavaScript: The Definitive Guide" />
-      <AddToCartForm itemID="2" itemTitle="JavaScript: The Good Parts" />
+
+      {/* <Tooltip label='Top' placement='top'>
+      <Button>Top</Button>
+    </Tooltip> */}
+      {/* <AddToCartForm itemID="1" itemTitle="JavaScript: The Definitive Guide" />
+      <AddToCartForm itemID="2" itemTitle="JavaScript: The Good Parts" /> */}
 
       {/* <CustomButton text="Blank" onClick={createForm} /> */}
-    </VStack>
+    </Box>
   );
 }

@@ -27,4 +27,18 @@ export const product = "Product"
 export class SurveyStrings {
   static recentForm = "Recent forms"
   static lastModified = "Last modified"
+  static addQuestion = "Асуулт нэмэх"
+  static shortAnswer = "Богино хариулт текст"
+  static longAnswer = "Урт хариулт текст"
+  static addOption = "Нэмэх"
+  static addOther = "Бусад"
+  static or = "эсвэл"
+  
+}
+
+export class ErrorMessages {
+  static occured = "Алдаа гарлаа";
+  static success = "Амжилттай";
+  static info = "Мэдэгдэл";
+
 }
