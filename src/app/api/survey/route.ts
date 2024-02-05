@@ -11,6 +11,7 @@ export const GET = async (req: NextRequest) => {
         Authorization: `Bearer ${"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImIyMGZhMTcwOUB1ZmUuZWR1Lm1uIiwiaWF0IjoxNzA2NjgxNzE3LCJleHAiOjE3MDcyODY1MTd9.N9ymjz1SNBjAZwCZ6ddlMv9Hl_PCMRhsMhtjM7lqI8c"}`,
       },
     });
+    console.log(res);
     return NextResponse.json(res, { status: 200 });
   } catch (error) {}
 };
@@ -27,7 +28,7 @@ export const POST = async (req: NextRequest) => {
         Authorization: `Bearer ${"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImIyMGZhMTcwOUB1ZmUuZWR1Lm1uIiwiaWF0IjoxNzA3MTEwNDY0LCJleHAiOjE3MDc3MTUyNjR9.E_qjer9oeI0rZuMrwwnnNOj6qJWsGgG2Ym8OYMc2vD0"}`,
       },
     }).then((d) => d.json());
-
+console.log(res);
     return NextResponse.json(res, { status: 201 });
   } catch (error) {
     console.log(error);

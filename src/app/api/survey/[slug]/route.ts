@@ -14,8 +14,12 @@ export const GET = async (
         Authorization: `Bearer ${"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImIyMGZhMTcwOUB1ZmUuZWR1Lm1uIiwiaWF0IjoxNzA3MTEwNDY0LCJleHAiOjE3MDc3MTUyNjR9.E_qjer9oeI0rZuMrwwnnNOj6qJWsGgG2Ym8OYMc2vD0"}`,
       },
     }).then((d) => d.json());
+    console.log(survies);
     return NextResponse.json(survies);
-  } catch (error) {}
+    
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const POST = async (
@@ -32,8 +36,11 @@ export const POST = async (
         Authorization: `Bearer ${"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImIyMGZhMTcwOUB1ZmUuZWR1Lm1uIiwiaWF0IjoxNzA3MTEwNDY0LCJleHAiOjE3MDc3MTUyNjR9.E_qjer9oeI0rZuMrwwnnNOj6qJWsGgG2Ym8OYMc2vD0"}`,
       },
     }).then((d) => d.json());
+    console.log(survies);
     return NextResponse.json(survies);
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+  }
 };
 export const PUT = async (
   req: NextRequest,

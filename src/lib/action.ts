@@ -7,6 +7,7 @@ import {
   SurveyTypes,
 } from "@/global/enum";
 import { ErrorMessages } from "@/global/string";
+import { url } from "@/global/values";
 import { SurveyModel } from "@/models/Survey.model";
 
 export type ActionListenType = {
@@ -30,7 +31,7 @@ export async function questionSet(
     };
     data.title = title;
     try {
-      await fetch(`${process.env.URL}/api/survey/${data._id}`, {
+      await fetch(`${url}/api/survey/${data._id}`, {
         body: JSON.stringify(data),
         method: "PUT",
       });
@@ -62,7 +63,7 @@ export async function getDataBySort(
   type: SurveySortTypes
 ): Promise<Array<SurveyModel>> {
   try {
-    let res = await fetch(`/api/survey/${type}`, {}).then(
+    let res = await fetch(`${url}/api/survey/${type}`, {}).then(
       async (d) => await d.json()
     );
 
@@ -75,7 +76,7 @@ export async function getDataBySort(
 
 export async function createForm(): Promise<SurveyModel> {
   try {
-    let res = await fetch(`/api/survey`, {
+    let res = await fetch(`${url}/api/survey`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ type: SurveyTypes.QUESTION }),
@@ -89,7 +90,7 @@ export async function createForm(): Promise<SurveyModel> {
 }
 export async function deleteSurveyById(id: string): Promise<boolean> {
   try {
-    let res = await fetch(`/api/survey/${id}`, {
+    let res = await fetch(`${url}/api/survey/${id}`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ type: SurveyTypes.QUESTION }),
