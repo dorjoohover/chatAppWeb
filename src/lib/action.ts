@@ -1,15 +1,18 @@
 "use server";
 
-import { ActionTypes, ContentTypes, SurveyTypes } from "@/global/enum";
+import {
+  ActionTypes,
+  ContentTypes,
+  SurveySortTypes,
+  SurveyTypes,
+} from "@/global/enum";
 import { ErrorMessages } from "@/global/string";
 import { SurveyModel } from "@/models/Survey.model";
-
 
 export type ActionListenType = {
   message?: string;
   type?: ActionTypes;
   data: SurveyModel;
- 
 };
 
 export async function questionSet(
@@ -31,7 +34,6 @@ export async function questionSet(
         body: JSON.stringify(data),
         method: "PUT",
       });
-     
 
       return {
         type: ActionTypes.SUCCESS,
@@ -54,4 +56,47 @@ export async function questionSet(
     message: ErrorMessages.info,
     data: data,
   };
+}
+
+export async function getDataBySort(
+  type: SurveySortTypes
+): Promise<Array<SurveyModel>> {
+  try {
+    let res = await fetch(`/api/survey/${type}`, {}).then(
+      async (d) => await d.json()
+    );
+
+    return res as Array<SurveyModel>;
+  } catch (error) {
+    console.log(error);
+    throw new Error(`${JSON.stringify(error)}`);
+  }
+}
+
+export async function createForm(): Promise<SurveyModel> {
+  try {
+    let res = await fetch(`/api/survey`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ type: SurveyTypes.QUESTION }),
+    }).then(async (d) => await d.json());
+
+    return res;
+  } catch (error) {
+    console.log(error);
+    throw new Error(`${JSON.stringify(error)}`);
+  }
+}
+export async function deleteSurveyById(id: string): Promise<boolean> {
+  try {
+    let res = await fetch(`/api/survey/${id}`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ type: SurveyTypes.QUESTION }),
+    }).then(async (d) => await d.json());
+
+    return res;
+  } catch (error) {
+    return false;
+  }
 }

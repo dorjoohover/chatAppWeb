@@ -56,3 +56,23 @@ export const PUT = async (
     return NextResponse.json(res, { status: 201 });
   } catch (error) {}
 };
+export const DELETE = async (
+  req: NextRequest,
+  { params }: { params: { slug: string } }
+) => {
+  try {
+    const { slug } = params;
+
+    const token = req.cookies.get("token");
+    const body = await req.json();
+    console.log(body);
+    const res = await fetch(`${api}survey/${slug}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImIyMGZhMTcwOUB1ZmUuZWR1Lm1uIiwiaWF0IjoxNzA3MTEwNDY0LCJleHAiOjE3MDc3MTUyNjR9.E_qjer9oeI0rZuMrwwnnNOj6qJWsGgG2Ym8OYMc2vD0"}`,
+      },
+    }).then((d) => d.json());
+    return NextResponse.json(res, { status: 201 });
+  } catch (error) {}
+};

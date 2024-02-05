@@ -32,6 +32,7 @@ import { MdOutlineSortByAlpha } from "react-icons/md";
 import { CheckIcon } from "@chakra-ui/icons";
 import { SurveyFunctions } from "@/global/functions";
 import { GridCard, ListCard } from "@/components/survey/card";
+import { createForm, deleteSurveyById, getDataBySort } from "@/lib/action";
 
 // async function signIn() {
 //   await signInWithPopup(auth, provider)
@@ -60,38 +61,6 @@ import { GridCard, ListCard } from "@/components/survey/card";
 //   return res;
 // }
 
-async function getDataBySort(
-  type: SurveySortTypes
-): Promise<Array<SurveyModel>> {
-  ("use server");
-  try {
-    let res = await fetch(`/api/survey/${type}`, {}).then(
-      async (d) => await d.json()
-    );
-
-    return res as Array<SurveyModel>;
-  } catch (error) {
-    console.log(error);
-    throw new Error(`${JSON.stringify(error)}`);
-  }
-}
-
-async function createForm(): Promise<SurveyModel> {
-  ("use server");
-  try {
-    let res = await fetch(`/api/survey`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ type: SurveyTypes.QUESTION }),
-    }).then(async (d) => await d.json());
-
-    return res;
-  } catch (error) {
-    console.log(error);
-    throw new Error(`${JSON.stringify(error)}`);
-  }
-}
-
 export default function Page() {
   const router = useRouter();
   const [view, setView] = useState<ViewTypes>(ViewTypes.GRID);
@@ -114,6 +83,20 @@ export default function Page() {
       .then((d) => {
         setData(d);
       })
+      .finally(() => setDataLoading(false));
+  };
+  const rename = async (id: string) => {
+    // setDataLoading(true);
+    // await getDataBySort(sort)
+    //   .then((d) => {
+    //     setData(d);
+    //   })
+    //   .finally(() => setDataLoading(false));
+  };
+
+  const deleteSurvey = async (id: string) => {
+    setDataLoading(true);
+    await deleteSurveyById(id)
       .finally(() => setDataLoading(false));
   };
   useEffect(() => {
@@ -199,14 +182,23 @@ export default function Page() {
         <Grid gridTemplateColumns={"repeat(4, 1fr)"} gap={5}>
           {data.map((d) => (
             <GridItem key={d._id}>
-              <GridCard data={d} />
+              <GridCard
+                data={d}
+                deleteSurvey={(e) => deleteSurvey(e)}
+                renameQuestion={(e) => rename(e)}
+              />
             </GridItem>
           ))}
         </Grid>
       ) : (
-        <VStack width={'full'} gap={3}>
+        <VStack width={"full"} gap={3}>
           {data.map((d) => (
-            <ListCard key={d._id} data={d} />
+            <ListCard
+              key={d._id}
+              data={d}
+              deleteSurvey={(e) => deleteSurvey(e)}
+              renameQuestion={(e) => rename(e)}
+            />
           ))}
         </VStack>
       )}

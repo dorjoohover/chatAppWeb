@@ -25,11 +25,20 @@ import { CiMenuKebab } from "react-icons/ci";
 import { CheckIcon } from "@chakra-ui/icons";
 import { SurveyValues } from "@/global/values";
 import { useState } from "react";
+import { ActionTypes, SurveyCardActionTypes } from "@/global/enum";
 
-export const GridCard = ({ data }: { data: SurveyModel }) => {
+export const GridCard = ({
+  data,
+  deleteSurvey,
+  renameQuestion,
+}: {
+  data: SurveyModel;
+  deleteSurvey: (id: string) => void;
+  renameQuestion: (id: string) => void;
+}) => {
   const format = new DateFormat();
   const [menu, setMenu] = useState<boolean>(false);
-  
+
   return (
     <Link href={`/survey/${data._id}`} onClick={() => setMenu(false)}>
       <Card maxW="sm">
@@ -90,6 +99,11 @@ export const GridCard = ({ data }: { data: SurveyModel }) => {
                       onClick={(e) => {
                         e.preventDefault();
                         setMenu(false);
+                        if (action.type == SurveyCardActionTypes.REMOVE) {
+                          deleteSurvey(data._id!);
+                        } else {
+                          renameQuestion(data._id!);
+                        }
                       }}
                       key={action.type}
                     >
@@ -105,7 +119,15 @@ export const GridCard = ({ data }: { data: SurveyModel }) => {
     </Link>
   );
 };
-export const ListCard = ({ data }: { data: SurveyModel }) => {
+export const ListCard = ({
+  data,
+  deleteSurvey,
+  renameQuestion,
+}: {
+  data: SurveyModel;
+  deleteSurvey: (id: string) => void;
+  renameQuestion: (id: string) => void;
+}) => {
   const format = new DateFormat();
   const [menu, setMenu] = useState<boolean>(false);
   return (
@@ -177,6 +199,11 @@ export const ListCard = ({ data }: { data: SurveyModel }) => {
                 onClick={(e) => {
                   e.preventDefault();
                   setMenu(false);
+                  if (action.type == SurveyCardActionTypes.REMOVE) {
+                    deleteSurvey(data._id!);
+                  } else {
+                    renameQuestion(data._id!);
+                  }
                 }}
                 key={action.type}
               >

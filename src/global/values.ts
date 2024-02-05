@@ -16,8 +16,10 @@ import { MdOutlineArrowDropDownCircle, MdOutlineShortText, MdOutlineTextFields }
 import { BsTextParagraph } from "react-icons/bs";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { IoIosCheckboxOutline, IoMdRadioButtonOn } from "react-icons/io";
-export const api = "http://localhost:5050/api/";
-export const url = "http://localhost:3000/";
+// export const api = "http://localhost:5050/api/";
+export const api = "139.162.40.225:5050/api/";
+// export const url = "http://localhost:3000/";
+export const url = "https://chat-app-web-xi.vercel.app";
 export const navbar = [
   {
     text: nav1,
